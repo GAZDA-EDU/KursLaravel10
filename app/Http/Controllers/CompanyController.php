@@ -14,7 +14,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Company::all();
+        return view('company.index')->with('companies', $companies);
     }
 
     /**
@@ -22,7 +23,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('companies.create');
+        return view('company.create');
     }
 
     /**
@@ -42,7 +43,7 @@ class CompanyController extends Controller
         $company -> nip = $validated['nip'];
         $company -> save();
 
-        // Session::flash('success', 'Dodano nową firmę!');
+        //Session::flash('success', 'Dodano nową firmę!');
 
         return redirect(route('dashboard'));
 
