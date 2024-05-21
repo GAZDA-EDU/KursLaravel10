@@ -5,10 +5,21 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
+    @if (session('success') == 'verification-link-sent')
+    <div class="mb-4 font-medium text-sm text-green-600">
+        {{ session('success') }}
+        @endif
+
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+
+                <div class="py-4">
+                    <a href="{{ route('company.create')}}">
+                        <x-primary-button>{{ ('+ Nowa firma') }}</x-primary-button>
+                    </a>
+                </div>
+
                     <section>
 
                         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -56,5 +67,4 @@
                 </div>
             </div>
         </div>
-    </div>
 </x-app-layout>

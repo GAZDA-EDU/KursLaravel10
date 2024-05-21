@@ -45,7 +45,7 @@ class CompanyController extends Controller
 
         //Session::flash('success', 'Dodano nową firmę!');
 
-        return redirect(route('dashboard'));
+        return redirect(route('company.index'));
 
     }
 
@@ -62,7 +62,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        return view('company.edit')->with('company', $company);
     }
 
     /**
@@ -70,7 +70,21 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'address' => 'required',
+            'nip' => 'required'
+        ]);
+
+        $company -> name = $validated['name'];
+        $company -> address = $validated['address'];
+        $company -> nip = $validated['nip'];
+        $company -> save();
+
+        //Session::flash('success', 'Zmieniono firmę!');
+
+        return redirect(route('company.index'));
+
     }
 
     /**
