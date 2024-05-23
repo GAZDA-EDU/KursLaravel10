@@ -92,6 +92,10 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $company->delete();
+
+        //Session::flash('success', 'Usunięto poprawnie');
+
+        return redirect(route('company.index'));
     }
 }

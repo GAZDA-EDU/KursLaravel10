@@ -55,6 +55,13 @@
                                         </td>
                                         <td class="px-6 py-4">
                                             <a href="{{ route('company.edit', ['company' => $company->id]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edytuj</a>
+                                            <form method="POST" action="{{ route('company.destroy', ['company' => $company->id]) }}">
+
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button onclick="confirmDeletion(event)" class="text-red-600 font-medium hover:underline" type="submit">Usuń</button>
+                                            </form>
                                         </td>
                                     </tr>
 
